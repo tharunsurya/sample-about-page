@@ -1,0 +1,404 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    list-style: none;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+/* Search Input & Button */
+.search-input {
+    max-width: 25rem;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    padding: 8px 15px;
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+.search-btn {
+    border-radius: 50px;
+    padding: 8px 15px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+:root {
+    --primary-color: #4fd1c5;
+    --secondary-color: #2c7a7b;
+    --bg-gradient-start: #663399;
+    --bg-gradient-end: #2E8B57;
+    --content-bg: rgba(255, 255, 255, 0.1);
+    --timeline-width: 2px;
+    --timeline-dot-size: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Intro Section */
+.intro-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 20px;
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
+.title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    z-index: -1;
+    animation: titleWave 2s ease-in-out infinite;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 20px auto 0;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: fadeInText 1.5s ease forwards;
+}
+
+.intro-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.intro-text span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.intro-text span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.intro-text span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.intro-text span:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.intro-text span:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.intro-text span:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* Fade-in Keyframes */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Timeline Section */
+.timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+/* Timeline Items */
+.timeline-item {
+    width: 45%;
+    position: relative;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.timeline-item.left {
+    float: left;
+    clear: left;
+    text-align: right;
+    animation: slideFromLeft 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.timeline-item.right {
+    float: right;
+    clear: right;
+    text-align: left;
+    animation: slideFromRight 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    margin-top: 30px;
+}
+
+/* Timeline Content */
+.timeline-content {
+    background: var(--content-bg);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    width: var(--timeline-dot-size);
+    height: var(--timeline-dot-size);
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 20px;
+}
+
+.timeline-item.left .timeline-content::before {
+    right: -10px;
+}
+
+.timeline-item.right .timeline-content::before {
+    left: -10px;
+}
+
+/* Timeline Text Styles */
+.date {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.timeline-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.about-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 120px;
+    /* Adjusted for fixed navbar */
+    position: relative;
+    color: white;
+    opacity: 0;
+    animation: titleReveal 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.about-title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    z-index: -1;
+    animation: titleGlow 3s ease-in-out infinite;
+}
+.intro-text:hover {
+    animation: blinkEffect 1s infinite; /* Blink effect on hover */
+}
+
+/* Keyframes for Blinking Effect */
+@keyframes blinkEffect {
+    0%, 100% {
+        opacity: 1; /* Fully visible */
+    }
+    50% {
+        opacity: 0; /* Invisible */
+    }
+}
+/* Hover Effects for Reversing Letters */
+.timeline-content:hover h2,
+.timeline-content:hover p {
+    display: inline-block;
+    animation: reverseLetters 1s ease-in-out forwards;
+}
+
+/* Keyframes for Reversing Letters */
+@keyframes reverseLetters {
+    0% {
+        transform: scaleX(1);
+        /* Original state */
+    }
+
+    50% {
+        transform: scaleX(-1);
+        /* Flipped horizontally */
+    }
+
+    100% {
+        transform: scaleX(1);
+        /* Back to original state */
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        -webkit-text-stroke: 2px rgba(79, 209, 197, 0.5);
+        /* Using your --primary-color */
+    }
+}
+
+/* Animations */
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hover Effects */
+.timeline-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content:hover::before {
+    background: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .timeline-item {
+        width: 100%;
+        text-align: center;
+        float: none;
+        clear: none;
+        margin-top: 0;
+    }
+
+    .timeline-content::before {
+        display: none;
+    }
+}
